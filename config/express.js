@@ -4,9 +4,9 @@ var load = require('express-load');
 const { fileLoader } = require('ejs');
 module.exports = function(){
     var app = express();
-    var porta = process.env.PORT || 8080;
-    app.listen(porta);
-    //app.set('port', 3000);
+    //var porta = process.env.PORT || 8080;
+    //app.listen(porta);
+    app.set('port', 3000);
 
     app.use(express.static('./public'));
     app.use(bodyParser.urlencoded({extended: true}));
