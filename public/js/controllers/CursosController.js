@@ -1,8 +1,4 @@
-angular.module('ifsp').controller('CursosController', function($scope){
-    $scope.total = 0;
-    $scope.incrementa = function(){
-        $scope.total++;
-    };
+angular.module('ifsp').controller('CursosController', function($resource, $scope){
 
     $scope.cursos  = [
 		{_id: 1, curso: 'Engenharia de Produção', coordenador: 'fabio.teixeira@ifsp.edu.br'},
@@ -12,4 +8,17 @@ angular.module('ifsp').controller('CursosController', function($scope){
     ];
 
     $scope.filtro='';
+
+    var Curso = $resource('/cursos');
+    function buscaCursos(){
+        Curso.query(
+            function(cursos){
+                $scope.cursos = cursos;
+            },
+            function(erro){
+                console.log(erro);
+            }
+        )
+    }
+    buscaCursos();
 });
