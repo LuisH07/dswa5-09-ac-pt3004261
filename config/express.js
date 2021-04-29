@@ -4,7 +4,7 @@ var load = require('express-load');
 const { fileLoader } = require('ejs');
 module.exports = function(){
     var app = express();
-    var porta = process.env.PORT || 8080;
+    var porta = process.env.PORT || 3000;
     app.listen(porta);
     //app.set('port', 3000);
 
