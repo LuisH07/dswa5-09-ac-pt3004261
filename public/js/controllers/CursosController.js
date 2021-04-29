@@ -1,24 +1,31 @@
 angular.module('ifsp').controller('CursosController', function($resource, $scope){
-
-    $scope.cursos  = [
-		{_id: 1, curso: 'Engenharia de Produção', coordenador: 'fabio.teixeira@ifsp.edu.br'},
- 		{_id: 2, curso: 'Tecnologia em Análise e Desenvolvimento de Sistemas', coordenador: 'fabiano.teixeira@ifsp.edu.br'},
- 		{_id: 3, curso: 'Licenciatura em Letras Português/Inglês', coordenador: 'melissa.teixeira@ifsp.edu.br'},
- 		{_id: 4, curso: 'Tecnologia em Gestão Pública', coordenador: 'melissa.teixeira@ifsp.edu.br'}
-    ];
-
+    $scope.cursos  = [];
     $scope.filtro='';
-
-    var Curso = $resource('/cursos');
+    $scope.mensagem={texto: ''}
+    var Curso = $resource('/cursos/:id');
     function buscaCursos(){
         Curso.query(
             function(cursos){
                 $scope.cursos = cursos;
+                $scope.mensagem = {};
             },
             function(erro){
+                console.log("Não foi possivel obter a lista de contatos");
                 console.log(erro);
+                $scope.mensagem = {texto: "não foi possivel"};
             }
         )
     }
     buscaCursos();
-});
+
+    $scope.remove = function(curso) {
+        console.log(curso);
+        Curso.delete({id: curso._id},
+            buscaCursos,
+            function(erro){
+                console.log("Não foi possível");
+                console.log(erro);
+                $scope.mensagem = {texto: "não foi possivel"};
+            });
+    };
+}); 

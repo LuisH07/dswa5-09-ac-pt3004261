@@ -1,13 +1,9 @@
 angular.module('ifsp').controller('ContatosController', function($resource, $scope){
-    $scope.contatos = [
-        {"_id": 1, "nome": "Fabio Teixeira", "email": "fabio.teixeira@ifsp.edu.br"},
-        {"_id": 2, "nome": "Luis Henrique", "email": "luis.malafaia@ifsp.edu.br"},
-        {"_id": 3, "nome": "Danielle de Souza", "email": "dani.souza@ifsp.edu.br"}
-    ];
-
+    $scope.contatos = [];
     $scope.filtro='';
+    $scope.mensagem = {texto: ''};
 
-    var Contato = $resource('/contatos');
+    var Contato = $resource('/contatos/:id');
     function buscaContatos(){
         Contato.query(
             function(contatos){
@@ -20,4 +16,15 @@ angular.module('ifsp').controller('ContatosController', function($resource, $sco
         );
     }
     buscaContatos();
+
+    $scope.remove = function(contato) {
+        console.log(contato);
+        Contato.delete({id : contato._id},
+            buscaContatos,
+            function(erro){
+                console.log("Não foi possivel remover");
+                console.log(erro);
+                $scope.mensagem = {texto: "Não foi possivel remover o contato"};
+            });
+    };
 });

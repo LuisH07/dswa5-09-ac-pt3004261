@@ -1,5 +1,6 @@
 <div ngview class="ng-scope">
     <div class="jumbotron ng-scope">
+        <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
         <img style="float:left;" src="img/Logo.jpg">
         <h1 class="text-center">Bem-vindo ao IFSP</h1>
         <h2 class="text-center">Lista de Contatos</h2>
@@ -22,15 +23,16 @@
     </nav>
     <br>
     <button class="btn btn-primary" ng-click='incrementa()'>Novo</button>
-    <p>Contatos Cadastrados: {{contatos.length}}</p>
+    <p ng-show="contatos.length">Contatos Cadastrados: {{contatos.length}}</p>
+    <p class="text-info" ng-hide="contatos.length"> Não há contatos cadastrados</p>
     <div class="table-responsive ng-scope">
         <table class="table table-hover">
             <tbody>
                 <tr><th>NOME</th><th>E-MAIL</th><th class="text-center">Ação</th></tr>
                 <tr ng-repeat="contato in contatos | filter:filtro" class="ng-scope">
-                    <td class="ng-binding"><a>{{contato.nome}}</a></td>
-                    <td class="ng-binding">{{contato.email}}</td>
-                    <td class="text-center"><button class="btn btn-warning">Remover</button></td>
+                    <td><a ng-href='#/contato/{{contato._id}}'>{{contato.nome}}</a></td>
+                    <td>{{contato.email}}</td>
+                    <td class="text-center"><button ng-click='remove(contato)' class="btn btn-warning">Remover</button></td>
                 </tr>
             </tbody>
         </table>
