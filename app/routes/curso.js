@@ -1,4 +1,4 @@
-modules.exports = function(app){
+module.exports = function(app){
     var controller = app.controllers.curso;
     app.route('/cursos')
         .get(controller.listaCursos);
