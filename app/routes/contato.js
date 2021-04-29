@@ -1,4 +1,4 @@
-module.exports = function(app){
+modules.exports = function(app){
     var controller = app.controllers.contato;
     app.route('/contatos')
         .get(controller.listaConstatos);
