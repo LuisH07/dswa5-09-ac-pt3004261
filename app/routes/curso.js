@@ -4,5 +4,5 @@ modules.exports = function(app){
         .get(controller.listaCursos);
     app.route('/cursos/:id')
         .get(controller.obtemCurso)
-        .delete(controller.removeContato);
+        .delete(controller.removeCurso);
 };
