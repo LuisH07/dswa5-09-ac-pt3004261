@@ -1,5 +1,5 @@
 {
-  "name": "dswa5-04-ac-pt3004261",
+  "name": "dswa5-07-ac-pt3004341",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.8.2",
     "body-parser": "^1.6.7",
     "ejs": "^0.8.8",
     "express": "^4.8.8",

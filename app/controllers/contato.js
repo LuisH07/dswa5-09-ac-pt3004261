@@ -1,7 +1,9 @@
+var ID_CONTATO_INC = 3;
+
 var contatos = [
-    {_id: 1, nome: 'Luis Henrique', email: 'luishmalafaia@gmail.com'},
-    {_id: 2, nome: 'Luis Carlos', email: 'luiscarlos@gmail.com'},
-    {_id: 3, nome: 'Sandra Aparecida', email: 'sandra@gmail.com'}
+    {_id: 1, nome: 'Fabio Teixeira', email: 'fabio.teixeira@ifsp.edu.br'},
+    {_id: 2, nome: 'Fabiano Teixeira', email: 'fabiano.teixeira@ifsp.edu.br'},
+    {_id: 3, nome: 'Melissa Teixeira', email: 'melissa.teixeira@ifsp.edu.br'}
 ]
 
 module.exports = function(){
@@ -23,6 +25,29 @@ module.exports = function(){
             return contato._id != idContato;
         });
         res.send(204).end();
+    };
+
+    controller.salvaContato = function(req, res){
+        var contato = req.body;
+        contato = contato._id ? atualiza(contato) : adiciona(contato);
+        res.json(contato);
+    };
+
+    function adiciona(contatoNovo){
+        contatoNovo._id = ++ID_CONTATO_INC;;
+        contatos.push(contatoNovo);
+        return contatoNovo;
+    };
+
+    function atualiza(contatoAlterar){
+        contatos = contatos.map(function(contato){
+            if(contato._id == contatoAlterar._id){
+                contato = contatoAlterar;
+            }
+            return contato;
+        });
+        return contatoAlterar;
     }
+
     return controller;
 };
