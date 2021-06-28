@@ -1,11 +1,3 @@
-var ID_CONTATO_INC = 3;
-
-var contatos = [
-    {_id: 1, nome: 'Fabio Teixeira', email: 'fabio.teixeira@ifsp.edu.br'},
-    {_id: 2, nome: 'Fabiano Teixeira', email: 'fabiano.teixeira@ifsp.edu.br'},
-    {_id: 3, nome: 'Melissa Teixeira', email: 'melissa.teixeira@ifsp.edu.br'}
-]
-
 module.exports = function(app){
     var Contato = app.models.contato;
 	var controller = {};
@@ -68,20 +60,5 @@ module.exports = function(app){
             );
         }
     };
-    function adiciona(contatoNovo){
-        contatoNovo._id = ++ID_CONTATO_INC;;
-        contatos.push(contatoNovo);
-        return contatoNovo;
-    };
-
-    function atualiza(contatoAlterar){
-        contatos = contatos.map(function(contato){
-            if(contato._id == contatoAlterar._id){
-                contato = contatoAlterar;
-            }
-            return contato;
-        });
-        return contatoAlterar;
-    }
 	return controller;
 };
