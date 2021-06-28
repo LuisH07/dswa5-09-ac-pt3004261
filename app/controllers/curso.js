@@ -7,7 +7,7 @@ var cursos = [
     {_id: 4, curso: 'Tecnologia em Gestão Pública', coordenador: 'melissa.teixeira@ifsp.edu.br'}
 ]
 
-module.exports = function(){
+module.exports = function(app){
     var Curso = app.models.curso;
 	var controller = {};
 	controller.listaCursos = function(req,res){

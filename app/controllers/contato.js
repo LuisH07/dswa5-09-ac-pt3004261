@@ -6,8 +6,8 @@ var contatos = [
     {_id: 3, nome: 'Melissa Teixeira', email: 'melissa.teixeira@ifsp.edu.br'}
 ]
 
-module.exports = function(){
-    var Contato = app.app.models.contato;
+module.exports = function(app){
+    var Contato = app.models.contato;
 	var controller = {};
 	controller.listaContatos = function(req,res){
 		Contato.find().exec().then(
