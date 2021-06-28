@@ -67,7 +67,21 @@ module.exports = function(app){
                 }
             );
         }
-        };
-        
+    };
+    function adiciona(contatoNovo){
+        contatoNovo._id = ++ID_CONTATO_INC;;
+        contatos.push(contatoNovo);
+        return contatoNovo;
+    };
+
+    function atualiza(contatoAlterar){
+        contatos = contatos.map(function(contato){
+            if(contato._id == contatoAlterar._id){
+                contato = contatoAlterar;
+            }
+            return contato;
+        });
+        return contatoAlterar;
+    }
 	return controller;
 };
