@@ -8,7 +8,7 @@ var cursos = [
 ]
 
 module.exports = function(){
-    var Curso = app.models.contato;
+    var Curso = app.models.curso;
 	var controller = {};
 	controller.listaCursos = function(req,res){
 		Curso.find().exec().then(

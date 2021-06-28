@@ -7,7 +7,7 @@ var contatos = [
 ]
 
 module.exports = function(){
-    var Contato = app.models.contato;
+    var Contato = app.app.models.contato;
 	var controller = {};
 	controller.listaContatos = function(req,res){
 		Contato.find().exec().then(
