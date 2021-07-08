@@ -3,8 +3,8 @@ module.exports = function(app){
 	var controller = {};
 	controller.listaCursos = function(req,res){
 		Curso.find().exec().then(
-			function(curso){
-				res.json(curso);
+			function(cursos){
+				res.json(cursos);
 			},
 			function(erro){
 				console.error(erro);
