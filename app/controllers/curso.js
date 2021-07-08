@@ -8,7 +8,7 @@ module.exports = function(app){
 			},
 			function(erro){
 				console.error(erro);
-				res.status(100).json(erro);
+				res.status(500).json(erro);
 			}
 		);
 	};
@@ -45,7 +45,7 @@ module.exports = function(app){
                 },
                 function(erro){
                     console.error(erro);
-                    res.status(500).json(erro);
+                    res.status(100).json(erro);
                 }
             );
         }else{
