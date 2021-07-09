@@ -37,7 +37,7 @@ module.exports = function(app){
     };
     
 	controller.salvaCurso = function(req, res){
-        var _id = res.body._id;
+        var _id = req.body._id;
         if(_id){
             Curso.findByIdAndUpdate(_id, req.body).exec().then(
                 function(curso){
@@ -45,7 +45,7 @@ module.exports = function(app){
                 },
                 function(erro){
                     console.error(erro);
-                    res.status(100).json(erro);
+                    res.status(500).json(erro);
                 }
             );
         }else{
@@ -55,7 +55,7 @@ module.exports = function(app){
                 },
                 function(erro){
                     console.log(erro);
-                    res.status(100).json(erro);
+                    res.status(500).json(erro);
                 }
             );
         }
