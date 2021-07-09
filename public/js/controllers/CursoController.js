@@ -9,7 +9,7 @@ angular.module('ifsp').controller('CursoController',
                     $scope.mensagem = {
                         texto: 'Não foi possível'
                     };
-                    console.log($routeParams.cursoId);
+                    console.log("$routeParams.cursoId");
                 });
         }else{$scope.curso = new Curso();}
 
