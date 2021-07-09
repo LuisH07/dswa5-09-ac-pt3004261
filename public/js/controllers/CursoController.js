@@ -13,7 +13,7 @@ angular.module('ifsp').controller('CursoController',
                 });
         }else{$scope.curso = new Curso();}
 
-        $scope.salva = function(){
+        $scope.salvaa = function(){
             $scope.curso.$save()
             .then(function() {
                 $scope.mensagem = {texto: 'Salvo com sucesso'};
